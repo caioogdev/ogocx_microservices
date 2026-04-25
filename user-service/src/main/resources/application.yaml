@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: user-service-ogocx
+
+  config:
+    import: optional:file:.env[.properties]
+
+  datasource:
+    url: ${DB_URL}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  rabbitmq:
+    host: ${RABBITMQ_HOST}
+    port: ${RABBITMQ_PORT}
+    username: ${RABBITMQ_USER}
+    password: ${RABBITMQ_PASSWORD}
+
+  elasticsearch:
+    uris: ${ELASTICSEARCH_URL}
+
+rabbitmq:
+  exchange:
+    user: ${RABBITMQ_EXCHANGE_USER}
+
+server:
+  port: 8080

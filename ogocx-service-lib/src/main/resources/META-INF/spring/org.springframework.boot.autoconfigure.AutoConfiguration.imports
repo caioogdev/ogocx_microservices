@@ -1,0 +1,2 @@
+com.ogocx.servicelib.autoconfigure.WebCommonsServletAutoConfiguration
+com.ogocx.servicelib.autoconfigure.WebCommonsReactiveAutoConfiguration

@@ -1,0 +1,1565 @@
+{
+  "apidogProject": "1.0.0",
+  "$schema": {
+    "app": "apidog",
+    "type": "project",
+    "version": "1.2.0"
+  },
+  "info": {
+    "name": "OGOCX_SOA",
+    "description": "",
+    "mockRule": {
+      "rules": [],
+      "enableSystemRule": true
+    }
+  },
+  "projectSetting": {
+    "id": "1261908",
+    "auth": {},
+    "securityScheme": {},
+    "gateway": [],
+    "language": "pt-BR",
+    "apiStatuses": [
+      "developing",
+      "testing",
+      "released",
+      "deprecated"
+    ],
+    "mockSettings": {},
+    "preProcessors": [],
+    "postProcessors": [],
+    "advancedSettings": {
+      "enableJsonc": false,
+      "enableBigint": false,
+      "responseValidate": true,
+      "enableTestScenarioSetting": false,
+      "enableYAPICompatScript": false,
+      "isDefaultUrlEncoding": 3,
+      "publishedDocUrlRules": {
+        "defaultRule": "SLUGIFY_WITH_RESOURCE_KEY",
+        "resourceKeyStandard": "NEW"
+      }
+    },
+    "initialDisabledMockIds": [],
+    "servers": [
+      {
+        "id": "default",
+        "name": "Servidor Padrão",
+        "moduleId": 1213890
+      }
+    ],
+    "cloudMock": {
+      "security": "free",
+      "enable": false,
+      "tokenKey": "apidogToken"
+    }
+  },
+  "apiCollection": [
+    {
+      "name": "Root",
+      "id": 7991088,
+      "auth": {},
+      "securityScheme": {},
+      "parentId": 0,
+      "serverId": "",
+      "description": "",
+      "identityPattern": {
+        "httpApi": {
+          "type": "methodAndPath",
+          "bodyType": "",
+          "fields": []
+        }
+      },
+      "shareSettings": {},
+      "visibility": "SHARED",
+      "moduleId": 1213890,
+      "preProcessors": [
+        {
+          "id": "inheritProcessors",
+          "type": "inheritProcessors",
+          "data": {}
+        }
+      ],
+      "postProcessors": [
+        {
+          "id": "inheritProcessors",
+          "type": "inheritProcessors",
+          "data": {}
+        }
+      ],
+      "inheritPostProcessors": {},
+      "inheritPreProcessors": {},
+      "items": [
+        {
+          "name": "user-service",
+          "id": 7991089,
+          "auth": {},
+          "securityScheme": {},
+          "parentId": 0,
+          "serverId": "",
+          "description": "",
+          "identityPattern": {
+            "httpApi": {
+              "type": "inherit",
+              "bodyType": "",
+              "fields": []
+            }
+          },
+          "shareSettings": {},
+          "visibility": "INHERITED",
+          "moduleId": 1213890,
+          "preProcessors": [
+            {
+              "id": "inheritProcessors",
+              "type": "inheritProcessors",
+              "data": {}
+            }
+          ],
+          "postProcessors": [
+            {
+              "id": "inheritProcessors",
+              "type": "inheritProcessors",
+              "data": {}
+            }
+          ],
+          "inheritPostProcessors": {},
+          "inheritPreProcessors": {},
+          "items": [
+            {
+              "name": "audit",
+              "id": 8113672,
+              "auth": {},
+              "securityScheme": {},
+              "parentId": 7991089,
+              "serverId": "",
+              "description": "",
+              "identityPattern": {
+                "httpApi": {
+                  "type": "inherit",
+                  "bodyType": "",
+                  "fields": []
+                }
+              },
+              "shareSettings": {},
+              "visibility": "INHERITED",
+              "moduleId": 1213890,
+              "preProcessors": [
+                {
+                  "id": "inheritProcessors",
+                  "type": "inheritProcessors",
+                  "data": {}
+                }
+              ],
+              "postProcessors": [
+                {
+                  "id": "inheritProcessors",
+                  "type": "inheritProcessors",
+                  "data": {}
+                }
+              ],
+              "inheritPostProcessors": {},
+              "inheritPreProcessors": {},
+              "items": [
+                {
+                  "name": "search",
+                  "api": {
+                    "id": "34122410",
+                    "method": "get",
+                    "path": "{{gateway_url}}/users/audit",
+                    "parameters": {
+                      "query": [
+                        {
+                          "required": false,
+                          "description": "",
+                          "type": "string",
+                          "id": "h2FrBpeqcD",
+                          "enable": true,
+                          "name": "size"
+                        },
+                        {
+                          "required": false,
+                          "description": "",
+                          "type": "string",
+                          "id": "lOZSBNbYIT",
+                          "enable": true,
+                          "name": "page"
+                        },
+                        {
+                          "required": false,
+                          "description": "",
+                          "type": "string",
+                          "id": "VvUlEbLU0M",
+                          "enable": true,
+                          "name": "userId",
+                          "example": "aca2bcbb-d5a6-42c9-93e6-ca07cfbf60bd"
+                        },
+                        {
+                          "required": false,
+                          "description": "",
+                          "type": "string",
+                          "id": "6IUTDNZfIv",
+                          "enable": true,
+                          "name": "actorId"
+                        },
+                        {
+                          "required": false,
+                          "description": "",
+                          "type": "string",
+                          "id": "wHSTxNZY93",
+                          "enable": true,
+                          "name": "action"
+                        },
+                        {
+                          "required": false,
+                          "description": "",
+                          "type": "string",
+                          "id": "9Jejs27R3B",
+                          "enable": true,
+                          "name": "status"
+                        }
+                      ],
+                      "path": [],
+                      "header": [
+                        {
+                          "required": false,
+                          "description": "",
+                          "type": "string",
+                          "id": "gEnE0zayLB",
+                          "example": "Bearer {{ogocx_accessToken}}",
+                          "enable": true,
+                          "name": "Authorization"
+                        }
+                      ]
+                    },
+                    "auth": {},
+                    "securityScheme": {},
+                    "commonParameters": {
+                      "query": [],
+                      "body": [],
+                      "cookie": [],
+                      "header": []
+                    },
+                    "responses": [
+                      {
+                        "id": "184278640",
+                        "code": 200,
+                        "name": "Sucesso",
+                        "headers": [],
+                        "jsonSchema": {
+                          "type": "object",
+                          "properties": {}
+                        },
+                        "itemSchema": {},
+                        "description": "",
+                        "contentType": "json",
+                        "mediaType": ""
+                      }
+                    ],
+                    "responseExamples": [
+                      {
+                        "name": "Correto",
+                        "data": "{\"content\":[{\"action\":\"USER_UPDATED\",\"actorId\":null,\"description\":\"Failed to update user '428d1994-2270-4306-bb96-b34d554b59dd': User with id 'a94a5241-32f0-463c-b121-617f3660eaf9' not found\",\"id\":\"0OILv50BLfKp0lLpkLnr\",\"occurredAt\":\"2026-04-24T10:31:39.489Z\",\"status\":\"FAILED\",\"userId\":\"428d1994-2270-4306-bb96-b34d554b59dd\"},{\"action\":\"USER_FETCHED\",\"actorId\":null,\"description\":\"User 'antonella.santos87@yahoo.com' fetched\",\"id\":\"0g2tvJ0BQSYChDWBrxB7\",\"occurredAt\":\"2026-04-23T23:29:52.504Z\",\"status\":\"SUCCESS\",\"userId\":\"428d1994-2270-4306-bb96-b34d554b59dd\"},{\"action\":\"USER_FETCHED\",\"actorId\":null,\"description\":\"User 'antonella.santos87@yahoo.com' fetched\",\"id\":\"zA2qvJ0BQSYChDWBMBB9\",\"occurredAt\":\"2026-04-23T23:26:03.354Z\",\"status\":\"SUCCESS\",\"userId\":\"428d1994-2270-4306-bb96-b34d554b59dd\"},{\"action\":\"USER_FETCHED\",\"actorId\":null,\"description\":\"User 'antonella.santos87@yahoo.com' fetched\",\"id\":\"BDJhvJ0BnKlMBHFczKN5\",\"occurredAt\":\"2026-04-23T22:06:59.187Z\",\"status\":\"SUCCESS\",\"userId\":\"428d1994-2270-4306-bb96-b34d554b59dd\"}],\"empty\":false,\"first\":true,\"last\":true,\"number\":0,\"numberOfElements\":4,\"pageable\":{\"offset\":0,\"pageNumber\":0,\"pageSize\":20,\"paged\":true,\"sort\":{\"empty\":false,\"sorted\":true,\"unsorted\":false},\"unpaged\":false},\"size\":20,\"sort\":{\"empty\":false,\"sorted\":true,\"unsorted\":false},\"totalElements\":4,\"totalPages\":1}",
+                        "responseId": "184278640"
+                      }
+                    ],
+                    "requestBody": {
+                      "type": "none",
+                      "parameters": [],
+                      "required": true,
+                      "mediaType": "",
+                      "examples": [],
+                      "oasExtensions": ""
+                    },
+                    "description": "",
+                    "tags": [],
+                    "status": "developing",
+                    "serverId": "",
+                    "operationId": "",
+                    "sourceUrl": "",
+                    "ordering": 10,
+                    "cases": [],
+                    "mocks": [],
+                    "customApiFields": "{}",
+                    "advancedSettings": {
+                      "disabledSystemHeaders": {}
+                    },
+                    "mockScript": {},
+                    "codeSamples": [],
+                    "commonResponseStatus": {},
+                    "responseChildren": [],
+                    "visibility": "INHERITED",
+                    "moduleId": 1213890,
+                    "oasExtensions": "",
+                    "type": "http",
+                    "preProcessors": [],
+                    "postProcessors": [],
+                    "inheritPostProcessors": {},
+                    "inheritPreProcessors": {}
+                  }
+                },
+                {
+                  "name": "all",
+                  "api": {
+                    "id": "34123778",
+                    "method": "get",
+                    "path": "{{gateway_url}}/users/audit",
+                    "parameters": {
+                      "path": [],
+                      "header": [
+                        {
+                          "required": false,
+                          "description": "",
+                          "type": "string",
+                          "id": "G0ziPxGBeN",
+                          "example": "Bearer {{ogocx_accessToken}}",
+                          "enable": true,
+                          "name": "Authorization"
+                        }
+                      ]
+                    },
+                    "auth": {},
+                    "securityScheme": {},
+                    "commonParameters": {
+                      "query": [],
+                      "body": [],
+                      "cookie": [],
+                      "header": []
+                    },
+                    "responses": [
+                      {
+                        "id": "112463751",
+                        "code": 200,
+                        "name": "Sucesso",
+                        "jsonSchema": {
+                          "type": "object",
+                          "properties": {}
+                        },
+                        "itemSchema": {},
+                        "contentType": "json"
+                      }
+                    ],
+                    "responseExamples": [
+                      {
+                        "name": "Correto",
+                        "data": "{\"content\":[{\"action\":\"USER_FETCHED_ALL\",\"actorId\":\"aca2bcbb-d5a6-42c9-93e6-ca07cfbf60bd\",\"description\":\"All users fetched, total: 4\",\"id\":\"4OJZv50BLfKp0lLpnbnF\",\"occurredAt\":\"2026-04-24T11:56:54.579Z\",\"status\":\"SUCCESS\",\"userId\":null},{\"action\":\"USER_FETCHED_ALL\",\"actorId\":null,\"description\":\"All users fetched, total: 4\",\"id\":\"3uJEv50BLfKp0lLpT7nx\",\"occurredAt\":\"2026-04-24T11:33:38.388Z\",\"status\":\"SUCCESS\",\"userId\":null},{\"action\":\"USER_FETCHED_ALL\",\"actorId\":null,\"description\":\"All users fetched, total: 4\",\"id\":\"3OJCv50BLfKp0lLpfrlg\",\"occurredAt\":\"2026-04-24T11:31:39.226Z\",\"status\":\"SUCCESS\",\"userId\":null},{\"action\":\"USER_FETCHED_ALL\",\"actorId\":null,\"description\":\"All users fetched, total: 4\",\"id\":\"2-JCv50BLfKp0lLpW7l4\",\"occurredAt\":\"2026-04-24T11:31:30.275Z\",\"status\":\"SUCCESS\",\"userId\":null},{\"action\":\"USER_UPDATED\",\"actorId\":null,\"description\":\"User 'esther.martins@yahoo.com' updated by 'esther.martins@yahoo.com'\",\"id\":\"0uIMv50BLfKp0lLpDLl4\",\"occurredAt\":\"2026-04-24T10:32:11.115Z\",\"status\":\"SUCCESS\",\"userId\":\"aca2bcbb-d5a6-42c9-93e6-ca07cfbf60bd\"},{\"action\":\"USER_UPDATED\",\"actorId\":null,\"description\":\"Failed to update user 'aca2bcbb-d5a6-42c9-93e6-ca07cfbf60bd': User with id 'a94a5241-32f0-463c-b121-617f3660eaf9' not found\",\"id\":\"0eILv50BLfKp0lLp07lZ\",\"occurredAt\":\"2026-04-24T10:31:56.494Z\",\"status\":\"FAILED\",\"userId\":\"aca2bcbb-d5a6-42c9-93e6-ca07cfbf60bd\"},{\"action\":\"USER_UPDATED\",\"actorId\":null,\"description\":\"Failed to update user '428d1994-2270-4306-bb96-b34d554b59dd': User with id 'a94a5241-32f0-463c-b121-617f3660eaf9' not found\",\"id\":\"0OILv50BLfKp0lLpkLnr\",\"occurredAt\":\"2026-04-24T10:31:39.489Z\",\"status\":\"FAILED\",\"userId\":\"428d1994-2270-4306-bb96-b34d554b59dd\"},{\"action\":\"USER_UPDATED\",\"actorId\":null,\"description\":\"Failed to update user 'e8cc1232-b476-4d60-b1ba-a75f36f7be7f': User with id 'e8cc1232-b476-4d60-b1ba-a75f36f7be7f' not found\",\"id\":\"zuIJv50BLfKp0lLpuLnF\",\"occurredAt\":\"2026-04-24T10:29:38.592Z\",\"status\":\"FAILED\",\"userId\":\"e8cc1232-b476-4d60-b1ba-a75f36f7be7f\"},{\"action\":\"USER_UPDATED\",\"actorId\":null,\"description\":\"Failed to update user 'e8cc1232-b476-4d60-b1ba-a75f36f7be7f': User with id 'e8cc1232-b476-4d60-b1ba-a75f36f7be7f' not found\",\"id\":\"1w2vvJ0BQSYChDWBMRAT\",\"occurredAt\":\"2026-04-23T23:31:31.196Z\",\"status\":\"FAILED\",\"userId\":\"e8cc1232-b476-4d60-b1ba-a75f36f7be7f\"},{\"action\":\"USER_UPDATED\",\"actorId\":null,\"description\":\"Failed to update user 'e8cc1232-b476-4d60-b1ba-a75f36f7be7f': User with id 'e8cc1232-b476-4d60-b1ba-a75f36f7be7f' not found\",\"id\":\"1Q2uvJ0BQSYChDWBNxB1\",\"occurredAt\":\"2026-04-23T23:30:27.308Z\",\"status\":\"FAILED\",\"userId\":\"e8cc1232-b476-4d60-b1ba-a75f36f7be7f\"},{\"action\":\"USER_UPDATED\",\"actorId\":null,\"description\":\"Failed to update user 'e8cc1232-b476-4d60-b1ba-a75f36f7be7f': User with id 'e8cc1232-b476-4d60-b1ba-a75f36f7be7f' not found\",\"id\":\"0w2tvJ0BQSYChDWB2RCk\",\"occurredAt\":\"2026-04-23T23:30:03.296Z\",\"status\":\"FAILED\",\"userId\":\"e8cc1232-b476-4d60-b1ba-a75f36f7be7f\"},{\"action\":\"USER_FETCHED\",\"actorId\":null,\"description\":\"User 'antonella.santos87@yahoo.com' fetched\",\"id\":\"0g2tvJ0BQSYChDWBrxB7\",\"occurredAt\":\"2026-04-23T23:29:52.504Z\",\"status\":\"SUCCESS\",\"userId\":\"428d1994-2270-4306-bb96-b34d554b59dd\"},{\"action\":\"USER_UPDATED\",\"actorId\":null,\"description\":\"Failed to update user 'e8cc1232-b476-4d60-b1ba-a75f36f7be7f': User with id 'e8cc1232-b476-4d60-b1ba-a75f36f7be7f' not found\",\"id\":\"0Q2tvJ0BQSYChDWBkxCe\",\"occurredAt\":\"2026-04-23T23:29:45.358Z\",\"status\":\"FAILED\",\"userId\":\"e8cc1232-b476-4d60-b1ba-a75f36f7be7f\"},{\"action\":\"USER_FETCHED_ALL\",\"actorId\":null,\"description\":\"All users fetched, total: 4\",\"id\":\"zQ2qvJ0BQSYChDWBgRAS\",\"occurredAt\":\"2026-04-23T23:26:24.014Z\",\"status\":\"SUCCESS\",\"userId\":null},{\"action\":\"USER_FETCHED\",\"actorId\":null,\"description\":\"User 'antonella.santos87@yahoo.com' fetched\",\"id\":\"zA2qvJ0BQSYChDWBMBB9\",\"occurredAt\":\"2026-04-23T23:26:03.354Z\",\"status\":\"SUCCESS\",\"userId\":\"428d1994-2270-4306-bb96-b34d554b59dd\"},{\"action\":\"USER_FETCHED_ALL\",\"actorId\":null,\"description\":\"All users fetched, total: 4\",\"id\":\"xw2ZvJ0BQSYChDWBpRDg\",\"occurredAt\":\"2026-04-23T23:07:59.303Z\",\"status\":\"SUCCESS\",\"userId\":null},{\"action\":\"USER_FETCHED_ALL\",\"actorId\":null,\"description\":\"All users fetched, total: 4\",\"id\":\"xg2TvJ0BQSYChDWBgxAo\",\"occurredAt\":\"2026-04-23T23:01:17.093Z\",\"status\":\"SUCCESS\",\"userId\":null},{\"action\":\"USER_FETCHED_ALL\",\"actorId\":null,\"description\":\"All users fetched, total: 4\",\"id\":\"DDJ2vJ0BnKlMBHFc36MB\",\"occurredAt\":\"2026-04-23T22:30:00.175Z\",\"status\":\"SUCCESS\",\"userId\":null},{\"action\":\"USER_FETCHED_ALL\",\"actorId\":null,\"description\":\"All users fetched, total: 4\",\"id\":\"CzJsvJ0BnKlMBHFcU6OP\",\"occurredAt\":\"2026-04-23T22:18:29.121Z\",\"status\":\"SUCCESS\",\"userId\":null},{\"action\":\"USER_FETCHED_ALL\",\"actorId\":null,\"description\":\"All users fetched, total: 4\",\"id\":\"CjJnvJ0BnKlMBHFcrKOX\",\"occurredAt\":\"2026-04-23T22:13:24.228Z\",\"status\":\"SUCCESS\",\"userId\":null}],\"empty\":false,\"first\":true,\"last\":false,\"number\":0,\"numberOfElements\":20,\"pageable\":{\"offset\":0,\"pageNumber\":0,\"pageSize\":20,\"paged\":true,\"sort\":{\"empty\":false,\"sorted\":true,\"unsorted\":false},\"unpaged\":false},\"size\":20,\"sort\":{\"empty\":false,\"sorted\":true,\"unsorted\":false},\"totalElements\":33,\"totalPages\":2}",
+                        "responseId": "112463751"
+                      }
+                    ],
+                    "requestBody": {
+                      "type": "none",
+                      "parameters": [],
+                      "required": true,
+                      "mediaType": "",
+                      "examples": [],
+                      "oasExtensions": ""
+                    },
+                    "description": "",
+                    "tags": [],
+                    "status": "developing",
+                    "serverId": "",
+                    "operationId": "",
+                    "sourceUrl": "",
+                    "ordering": 20,
+                    "cases": [],
+                    "mocks": [],
+                    "customApiFields": "{}",
+                    "advancedSettings": {
+                      "disabledSystemHeaders": {}
+                    },
+                    "mockScript": {},
+                    "codeSamples": [],
+                    "commonResponseStatus": {},
+                    "responseChildren": [],
+                    "visibility": "INHERITED",
+                    "moduleId": 1213890,
+                    "oasExtensions": "",
+                    "type": "http",
+                    "preProcessors": [],
+                    "postProcessors": [],
+                    "inheritPostProcessors": {},
+                    "inheritPreProcessors": {}
+                  }
+                }
+              ]
+            },
+            {
+              "name": "create",
+              "api": {
+                "id": "33606186",
+                "method": "post",
+                "path": "{{user_url}}/users",
+                "parameters": {},
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "192148479",
+                    "code": 200,
+                    "name": "Sucesso",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "itemSchema": {},
+                    "description": "",
+                    "contentType": "json",
+                    "mediaType": ""
+                  }
+                ],
+                "responseExamples": [
+                  {
+                    "name": "Criado",
+                    "data": "{\"id\":\"e8cc1232-b476-4d60-b1ba-a75f36f7be7f\",\"firstName\":\"Caio\",\"lastName\":\"Guimaraes\",\"firstDocument\":\"12345678901\",\"secondDocument\":\"MG1234567\",\"birthDate\":\"2002-01-10\",\"email\":\"cioog@gmail.com\",\"status\":true,\"createdAt\":\"2026-04-17T21:27:11.942443\",\"updatedAt\":\"2026-04-17T21:27:11.942472\"}",
+                    "responseId": "192148479"
+                  }
+                ],
+                "requestBody": {
+                  "type": "application/json",
+                  "parameters": [],
+                  "jsonSchema": {
+                    "type": "object",
+                    "properties": {}
+                  },
+                  "required": true,
+                  "mediaType": "",
+                  "examples": [
+                    {
+                      "mediaType": "application/json",
+                      "value": "{\n    \"createdBy\": \"a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11\",\n    \"firstName\": \"{{$person.firstName}}\",\n    \"lastName\": \"{{$person.lastName}}\",\n    \"firstDocument\": \"{{$number.int(min=10000000000, max=50000000000)}}\",\n    \"secondDocument\": \"{{$number.int(min=10000000000, max=50000000000)}}\",\n    \"birthDate\": \"2002-01-10\",\n    \"email\": \"{{$internet.email}}\",\n    \"password\": \"Caio1234567\",\n    \"status\": true\n}"
+                    }
+                  ],
+                  "oasExtensions": ""
+                },
+                "description": "",
+                "tags": [],
+                "status": "developing",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 10,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [],
+                "visibility": "INHERITED",
+                "moduleId": 1213890,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "get all",
+              "api": {
+                "id": "33606370",
+                "method": "get",
+                "path": "{{gateway_url}}/users",
+                "parameters": {
+                  "header": [
+                    {
+                      "required": false,
+                      "description": "",
+                      "type": "string",
+                      "id": "Ie3hzP7IDe",
+                      "example": "Bearer {{ogocx_accessToken}}",
+                      "enable": true,
+                      "name": "Authorization"
+                    }
+                  ]
+                },
+                "auth": {
+                  "type": "noauth",
+                  "noauth": {}
+                },
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "123136151",
+                    "code": 200,
+                    "name": "Sucesso",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "itemSchema": {},
+                    "description": "",
+                    "contentType": "json",
+                    "mediaType": ""
+                  }
+                ],
+                "responseExamples": [
+                  {
+                    "name": "Correto",
+                    "data": "{\"total\":2,\"data\":[{\"id\":\"e8cc1232-b476-4d60-b1ba-a75f36f7be7f\",\"firstName\":\"Caio\",\"lastName\":\"Guimaraes\",\"firstDocument\":\"12345678901\",\"secondDocument\":\"MG1234567\",\"birthDate\":\"2002-01-10\",\"email\":\"cioog@gmail.com\",\"status\":true,\"createdAt\":\"2026-04-17T21:27:11.942443\",\"updatedAt\":\"2026-04-17T21:27:11.942472\"},{\"id\":\"042b7f88-1cc5-4629-929a-d23eb7b39524\",\"firstName\":\"Caio\",\"lastName\":\"Oliveira\",\"firstDocument\":\"1234567890122\",\"secondDocument\":\"MG123456722\",\"birthDate\":\"2002-01-10\",\"email\":\"caio@gmail.com\",\"status\":true,\"createdAt\":\"2026-04-17T22:05:21.145012\",\"updatedAt\":\"2026-04-17T22:05:21.145048\"}],\"page\":0,\"perPage\":10,\"hasNext\":false,\"hasPrev\":false}",
+                    "responseId": "123136151"
+                  }
+                ],
+                "requestBody": {
+                  "type": "none",
+                  "parameters": [],
+                  "required": true,
+                  "mediaType": "",
+                  "examples": [],
+                  "oasExtensions": ""
+                },
+                "description": "",
+                "tags": [],
+                "status": "developing",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 20,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [],
+                "visibility": "INHERITED",
+                "moduleId": 1213890,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "get by id",
+              "api": {
+                "id": "33606371",
+                "method": "get",
+                "path": "{{gateway_url}}/users/{id}",
+                "parameters": {
+                  "path": [
+                    {
+                      "id": "id#0",
+                      "name": "id",
+                      "required": true,
+                      "description": "",
+                      "type": "string",
+                      "enable": true,
+                      "example": "428d1994-2270-4306-bb96-b34d554b59dd"
+                    }
+                  ],
+                  "header": [
+                    {
+                      "required": false,
+                      "description": "",
+                      "type": "string",
+                      "id": "PI4HOi11G5",
+                      "example": "Bearer {{ogocx_accessToken}}",
+                      "enable": true,
+                      "name": "Authorization"
+                    }
+                  ]
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "165605365",
+                    "code": 200,
+                    "name": "Sucesso",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "itemSchema": {},
+                    "description": "",
+                    "contentType": "json",
+                    "mediaType": ""
+                  }
+                ],
+                "responseExamples": [
+                  {
+                    "name": "Correto",
+                    "data": "{\"id\":\"e8cc1232-b476-4d60-b1ba-a75f36f7be7f\",\"firstName\":\"Caio\",\"lastName\":\"Guimaraes\",\"firstDocument\":\"12345678901\",\"secondDocument\":\"MG1234567\",\"birthDate\":\"2002-01-10\",\"email\":\"cioog@gmail.com\",\"status\":true,\"createdAt\":\"2026-04-17T21:27:11.942443\",\"updatedAt\":\"2026-04-17T21:27:11.942472\"}",
+                    "responseId": "165605365"
+                  }
+                ],
+                "requestBody": {
+                  "type": "application/json",
+                  "parameters": [],
+                  "jsonSchema": {
+                    "type": "object",
+                    "properties": {}
+                  },
+                  "required": true,
+                  "mediaType": "",
+                  "examples": [
+                    {
+                      "mediaType": "application/json",
+                      "value": ""
+                    }
+                  ],
+                  "oasExtensions": ""
+                },
+                "description": "",
+                "tags": [],
+                "status": "developing",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 30,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [],
+                "visibility": "INHERITED",
+                "moduleId": 1213890,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "update",
+              "api": {
+                "id": "33636072",
+                "method": "patch",
+                "path": "users/e8cc1232-b476-4d60-b1ba-a75f36f7be7f",
+                "parameters": {},
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "175018871",
+                    "code": 200,
+                    "name": "Sucesso",
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "itemSchema": {},
+                    "contentType": "json"
+                  }
+                ],
+                "responseExamples": [
+                  {
+                    "name": "Correto",
+                    "data": "{\"message\":\"User updated successfully\",\"data\":{\"id\":\"e8cc1232-b476-4d60-b1ba-a75f36f7be7f\",\"firstName\":\"Caio\",\"lastName\":\"Oliveira Guimaraes\",\"firstDocument\":\"12345678901\",\"secondDocument\":\"MG1234567\",\"birthDate\":\"2002-01-10\",\"email\":\"cioog@gmail.com\",\"status\":true,\"createdAt\":\"2026-04-17T21:27:11.942443\",\"updatedAt\":\"2026-04-17T22:37:50.574363\"}}",
+                    "responseId": "175018871"
+                  }
+                ],
+                "requestBody": {
+                  "type": "application/json",
+                  "parameters": [],
+                  "jsonSchema": {
+                    "type": "object",
+                    "properties": {}
+                  },
+                  "required": true,
+                  "mediaType": "",
+                  "examples": [
+                    {
+                      "mediaType": "application/json",
+                      "value": "{\n        \"lastName\": \"Oliveira Guimaraes\"\n}"
+                    }
+                  ],
+                  "oasExtensions": ""
+                },
+                "description": "",
+                "tags": [],
+                "status": "developing",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 40,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [],
+                "visibility": "INHERITED",
+                "moduleId": 1213890,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            }
+          ]
+        },
+        {
+          "name": "auth-service",
+          "id": 8060063,
+          "auth": {},
+          "securityScheme": {},
+          "parentId": 0,
+          "serverId": "",
+          "description": "",
+          "identityPattern": {
+            "httpApi": {
+              "type": "inherit",
+              "bodyType": "",
+              "fields": []
+            }
+          },
+          "shareSettings": {},
+          "visibility": "INHERITED",
+          "moduleId": 1213890,
+          "preProcessors": [
+            {
+              "id": "inheritProcessors",
+              "type": "inheritProcessors",
+              "data": {}
+            }
+          ],
+          "postProcessors": [
+            {
+              "id": "inheritProcessors",
+              "type": "inheritProcessors",
+              "data": {}
+            }
+          ],
+          "inheritPostProcessors": {},
+          "inheritPreProcessors": {},
+          "items": [
+            {
+              "name": "audit",
+              "id": 8113976,
+              "auth": {},
+              "securityScheme": {},
+              "parentId": 8060063,
+              "serverId": "",
+              "description": "",
+              "identityPattern": {
+                "httpApi": {
+                  "type": "inherit",
+                  "bodyType": "",
+                  "fields": []
+                }
+              },
+              "shareSettings": {},
+              "visibility": "INHERITED",
+              "moduleId": 1213890,
+              "preProcessors": [
+                {
+                  "id": "inheritProcessors",
+                  "type": "inheritProcessors",
+                  "data": {}
+                }
+              ],
+              "postProcessors": [
+                {
+                  "id": "inheritProcessors",
+                  "type": "inheritProcessors",
+                  "data": {}
+                }
+              ],
+              "inheritPostProcessors": {},
+              "inheritPreProcessors": {},
+              "items": [
+                {
+                  "name": "all",
+                  "api": {
+                    "id": "34124257",
+                    "method": "get",
+                    "path": "{{gateway_url}}/auth/audit",
+                    "parameters": {
+                      "header": [
+                        {
+                          "required": false,
+                          "description": "",
+                          "type": "string",
+                          "id": "0oeR8494jI",
+                          "example": "Bearer {{ogocx_accessToken}}",
+                          "enable": true,
+                          "name": "Authorization"
+                        }
+                      ]
+                    },
+                    "auth": {},
+                    "securityScheme": {},
+                    "commonParameters": {
+                      "query": [],
+                      "body": [],
+                      "cookie": [],
+                      "header": []
+                    },
+                    "responses": [
+                      {
+                        "id": "152902670",
+                        "code": 200,
+                        "name": "Sucesso",
+                        "jsonSchema": {
+                          "type": "object",
+                          "properties": {}
+                        },
+                        "itemSchema": {},
+                        "contentType": "json"
+                      }
+                    ],
+                    "responseExamples": [
+                      {
+                        "name": "Correto",
+                        "data": "{\"content\":[{\"action\":\"CREDENTIAL_UPDATED\",\"description\":\"Credential updated for email 'emanuel.moreira79@yahoo.com'\",\"email\":\"emanuel.moreira79@yahoo.com\",\"id\":\"6uJ2v50BLfKp0lLp87nk\",\"occurredAt\":\"2026-04-24T12:28:57.172Z\",\"status\":\"SUCCESS\",\"userId\":\"71f4aa15-39ff-4302-8930-285dd191e3f8\"},{\"action\":\"CREDENTIAL_CREATED\",\"description\":\"Credential created for email 'emanuel.moreira79@yahoo.com'\",\"email\":\"emanuel.moreira79@yahoo.com\",\"id\":\"5-Jxv50BLfKp0lLpBrm7\",\"occurredAt\":\"2026-04-24T12:22:28.794Z\",\"status\":\"SUCCESS\",\"userId\":\"71f4aa15-39ff-4302-8930-285dd191e3f8\"},{\"action\":\"SIGN_IN_SUCCESS\",\"description\":\"Sign-in successful for email 'esther.martins@yahoo.com'\",\"email\":\"esther.martins@yahoo.com\",\"id\":\"4-Jsv50BLfKp0lLp1Lk5\",\"occurredAt\":\"2026-04-24T12:17:53.705Z\",\"status\":\"SUCCESS\",\"userId\":null},{\"action\":\"SIGN_IN_SUCCESS\",\"description\":\"Sign-in successful for email 'esther.martins@yahoo.com'\",\"email\":\"esther.martins@yahoo.com\",\"id\":\"4uJsv50BLfKp0lLpCrmR\",\"occurredAt\":\"2026-04-24T12:17:02.064Z\",\"status\":\"SUCCESS\",\"userId\":null},{\"action\":\"SIGN_IN_SUCCESS\",\"description\":\"Sign-in successful for email 'esther.martins@yahoo.com'\",\"email\":\"esther.martins@yahoo.com\",\"id\":\"4eJbv50BLfKp0lLpRrko\",\"occurredAt\":\"2026-04-24T11:58:43.219Z\",\"status\":\"SUCCESS\",\"userId\":null},{\"action\":\"SIGN_IN_SUCCESS\",\"description\":\"Sign-in successful for email 'esther.martins@yahoo.com'\",\"email\":\"esther.martins@yahoo.com\",\"id\":\"3-JZv50BLfKp0lLpjrnY\",\"occurredAt\":\"2026-04-24T11:56:50.735Z\",\"status\":\"SUCCESS\",\"userId\":null},{\"action\":\"SIGN_IN_SUCCESS\",\"description\":\"Sign-in successful for email 'esther.martins@yahoo.com'\",\"email\":\"esther.martins@yahoo.com\",\"id\":\"3eJEv50BLfKp0lLpRLm9\",\"occurredAt\":\"2026-04-24T11:33:35.533Z\",\"status\":\"SUCCESS\",\"userId\":null},{\"action\":\"SIGN_IN_SUCCESS\",\"description\":\"Sign-in successful for email 'esther.martins@yahoo.com'\",\"email\":\"esther.martins@yahoo.com\",\"id\":\"2uJBv50BLfKp0lLp6Lnc\",\"occurredAt\":\"2026-04-24T11:31:00.949Z\",\"status\":\"SUCCESS\",\"userId\":null},{\"action\":\"TOKEN_REFRESH_FAILED\",\"description\":\"Token refresh failed: Invalid Credentials\",\"email\":null,\"id\":\"2eJBv50BLfKp0lLpurmo\",\"occurredAt\":\"2026-04-24T11:30:49.112Z\",\"status\":\"FAILED\",\"userId\":null},{\"action\":\"SIGN_IN_SUCCESS\",\"description\":\"Sign-in successful for email 'esther.martins@yahoo.com'\",\"email\":\"esther.martins@yahoo.com\",\"id\":\"2OI_v50BLfKp0lLpl7m2\",\"occurredAt\":\"2026-04-24T11:28:29.091Z\",\"status\":\"SUCCESS\",\"userId\":null},{\"action\":\"SIGN_IN_SUCCESS\",\"description\":\"Sign-in successful for email 'esther.martins@yahoo.com'\",\"email\":\"esther.martins@yahoo.com\",\"id\":\"1-Iiv50BLfKp0lLp07kW\",\"occurredAt\":\"2026-04-24T10:57:03.740Z\",\"status\":\"SUCCESS\",\"userId\":null},{\"action\":\"SIGN_IN_SUCCESS\",\"description\":\"Sign-in successful for email 'esther.martins@yahoo.com'\",\"email\":\"esther.martins@yahoo.com\",\"id\":\"1uIev50BLfKp0lLpALkH\",\"occurredAt\":\"2026-04-24T10:51:47.577Z\",\"status\":\"SUCCESS\",\"userId\":null},{\"action\":\"SIGN_IN_SUCCESS\",\"description\":\"Sign-in successful for email 'esther.martins@yahoo.com'\",\"email\":\"esther.martins@yahoo.com\",\"id\":\"1eIcv50BLfKp0lLpSrn6\",\"occurredAt\":\"2026-04-24T10:49:55.688Z\",\"status\":\"SUCCESS\",\"userId\":null},{\"action\":\"SIGN_IN_SUCCESS\",\"description\":\"Sign-in successful for email 'esther.martins@yahoo.com'\",\"email\":\"esther.martins@yahoo.com\",\"id\":\"1OIZv50BLfKp0lLp17mZ\",\"occurredAt\":\"2026-04-24T10:47:15.072Z\",\"status\":\"SUCCESS\",\"userId\":null},{\"action\":\"CREDENTIAL_UPDATED\",\"description\":\"Credential updated for email 'esther.martins@yahoo.com'\",\"email\":\"esther.martins@yahoo.com\",\"id\":\"0-IMv50BLfKp0lLpDLm0\",\"occurredAt\":\"2026-04-24T10:32:11.186Z\",\"status\":\"SUCCESS\",\"userId\":\"aca2bcbb-d5a6-42c9-93e6-ca07cfbf60bd\"},{\"action\":\"SIGN_IN_SUCCESS\",\"description\":\"Sign-in successful for email 'esther.martins@yahoo.com'\",\"email\":\"esther.martins@yahoo.com\",\"id\":\"z-ILv50BLfKp0lLph7lz\",\"occurredAt\":\"2026-04-24T10:31:37.052Z\",\"status\":\"SUCCESS\",\"userId\":null},{\"action\":\"SIGN_IN_SUCCESS\",\"description\":\"Sign-in successful for email 'esther.martins@yahoo.com'\",\"email\":\"esther.martins@yahoo.com\",\"id\":\"zeIJv50BLfKp0lLph7mW\",\"occurredAt\":\"2026-04-24T10:29:25.965Z\",\"status\":\"SUCCESS\",\"userId\":null},{\"action\":\"SIGN_IN_SUCCESS\",\"description\":\"Sign-in successful for email 'esther.martins@yahoo.com'\",\"email\":\"esther.martins@yahoo.com\",\"id\":\"1g2vvJ0BQSYChDWBJBCK\",\"occurredAt\":\"2026-04-23T23:31:27.990Z\",\"status\":\"SUCCESS\",\"userId\":null},{\"action\":\"SIGN_IN_SUCCESS\",\"description\":\"Sign-in successful for email 'esther.martins@yahoo.com'\",\"email\":\"esther.martins@yahoo.com\",\"id\":\"1A2uvJ0BQSYChDWBMBDM\",\"occurredAt\":\"2026-04-23T23:30:25.601Z\",\"status\":\"SUCCESS\",\"userId\":null},{\"action\":\"SIGN_IN_SUCCESS\",\"description\":\"Sign-in successful for email 'esther.martins@yahoo.com'\",\"email\":\"esther.martins@yahoo.com\",\"id\":\"0A2svJ0BQSYChDWB8hDP\",\"occurredAt\":\"2026-04-23T23:29:04.200Z\",\"status\":\"SUCCESS\",\"userId\":null}],\"empty\":false,\"first\":true,\"last\":false,\"number\":0,\"numberOfElements\":20,\"pageable\":{\"offset\":0,\"pageNumber\":0,\"pageSize\":20,\"paged\":true,\"sort\":{\"empty\":false,\"sorted\":true,\"unsorted\":false},\"unpaged\":false},\"size\":20,\"sort\":{\"empty\":false,\"sorted\":true,\"unsorted\":false},\"totalElements\":26,\"totalPages\":2}",
+                        "responseId": "152902670"
+                      }
+                    ],
+                    "requestBody": {
+                      "type": "none",
+                      "parameters": [],
+                      "required": true,
+                      "mediaType": "",
+                      "examples": [],
+                      "oasExtensions": ""
+                    },
+                    "description": "",
+                    "tags": [],
+                    "status": "developing",
+                    "serverId": "",
+                    "operationId": "",
+                    "sourceUrl": "",
+                    "ordering": 10,
+                    "cases": [],
+                    "mocks": [],
+                    "customApiFields": "{}",
+                    "advancedSettings": {
+                      "disabledSystemHeaders": {}
+                    },
+                    "mockScript": {},
+                    "codeSamples": [],
+                    "commonResponseStatus": {},
+                    "responseChildren": [],
+                    "visibility": "INHERITED",
+                    "moduleId": 1213890,
+                    "oasExtensions": "",
+                    "type": "http",
+                    "preProcessors": [],
+                    "postProcessors": [],
+                    "inheritPostProcessors": {},
+                    "inheritPreProcessors": {}
+                  }
+                },
+                {
+                  "name": "search",
+                  "api": {
+                    "id": "34124349",
+                    "method": "get",
+                    "path": "{{gateway_url}}/auth/audit",
+                    "parameters": {
+                      "query": [
+                        {
+                          "required": false,
+                          "description": "estado",
+                          "type": "string",
+                          "id": "h2apAnI95H",
+                          "enable": false,
+                          "name": "status"
+                        },
+                        {
+                          "required": false,
+                          "description": "",
+                          "type": "string",
+                          "id": "lhQ4MJPxy8",
+                          "enable": true,
+                          "name": "action",
+                          "example": "CREDENTIAL_UPDATED"
+                        },
+                        {
+                          "required": false,
+                          "description": "",
+                          "type": "string",
+                          "id": "tP1WpjY3Fn",
+                          "enable": false,
+                          "name": "email"
+                        }
+                      ],
+                      "header": [
+                        {
+                          "required": false,
+                          "description": "",
+                          "type": "string",
+                          "id": "R2yRYMnHZD",
+                          "example": "Bearer {{ogocx_accessToken}}",
+                          "enable": true,
+                          "name": "Authorization"
+                        }
+                      ]
+                    },
+                    "auth": {},
+                    "securityScheme": {},
+                    "commonParameters": {
+                      "query": [],
+                      "body": [],
+                      "cookie": [],
+                      "header": []
+                    },
+                    "responses": [
+                      {
+                        "id": "106500216",
+                        "code": 200,
+                        "name": "Sucesso",
+                        "jsonSchema": {
+                          "type": "object",
+                          "properties": {}
+                        },
+                        "itemSchema": {},
+                        "contentType": "json"
+                      }
+                    ],
+                    "responseExamples": [
+                      {
+                        "name": "Correto",
+                        "data": "{\"content\":[{\"action\":\"CREDENTIAL_UPDATED\",\"description\":\"Credential updated for email 'emanuel.moreira79@yahoo.com'\",\"email\":\"emanuel.moreira79@yahoo.com\",\"id\":\"6uJ2v50BLfKp0lLp87nk\",\"occurredAt\":\"2026-04-24T12:28:57.172Z\",\"status\":\"SUCCESS\",\"userId\":\"71f4aa15-39ff-4302-8930-285dd191e3f8\"},{\"action\":\"CREDENTIAL_UPDATED\",\"description\":\"Credential updated for email 'esther.martins@yahoo.com'\",\"email\":\"esther.martins@yahoo.com\",\"id\":\"0-IMv50BLfKp0lLpDLm0\",\"occurredAt\":\"2026-04-24T10:32:11.186Z\",\"status\":\"SUCCESS\",\"userId\":\"aca2bcbb-d5a6-42c9-93e6-ca07cfbf60bd\"}],\"empty\":false,\"first\":true,\"last\":true,\"number\":0,\"numberOfElements\":2,\"pageable\":{\"offset\":0,\"pageNumber\":0,\"pageSize\":20,\"paged\":true,\"sort\":{\"empty\":false,\"sorted\":true,\"unsorted\":false},\"unpaged\":false},\"size\":20,\"sort\":{\"empty\":false,\"sorted\":true,\"unsorted\":false},\"totalElements\":2,\"totalPages\":1}",
+                        "responseId": "106500216"
+                      }
+                    ],
+                    "requestBody": {
+                      "type": "none",
+                      "parameters": [],
+                      "required": true,
+                      "mediaType": "",
+                      "examples": [],
+                      "oasExtensions": ""
+                    },
+                    "description": "",
+                    "tags": [],
+                    "status": "developing",
+                    "serverId": "",
+                    "operationId": "",
+                    "sourceUrl": "",
+                    "ordering": 20,
+                    "cases": [],
+                    "mocks": [],
+                    "customApiFields": "{}",
+                    "advancedSettings": {
+                      "disabledSystemHeaders": {}
+                    },
+                    "mockScript": {},
+                    "codeSamples": [],
+                    "commonResponseStatus": {},
+                    "responseChildren": [],
+                    "visibility": "INHERITED",
+                    "moduleId": 1213890,
+                    "oasExtensions": "",
+                    "type": "http",
+                    "preProcessors": [],
+                    "postProcessors": [],
+                    "inheritPostProcessors": {},
+                    "inheritPreProcessors": {}
+                  }
+                }
+              ]
+            },
+            {
+              "name": "refresh token",
+              "api": {
+                "id": "33882840",
+                "method": "post",
+                "path": "{{auth_url}}/auth/refresh",
+                "parameters": {},
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "129936722",
+                    "code": 200,
+                    "name": "Sucesso",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "itemSchema": {},
+                    "description": "",
+                    "contentType": "json",
+                    "mediaType": ""
+                  }
+                ],
+                "responseExamples": [
+                  {
+                    "name": "Erro interno do servidor",
+                    "data": "{\"status\":500,\"field\":null,\"message\":\"An unexpected error occurred\"}",
+                    "responseId": "129936722"
+                  }
+                ],
+                "requestBody": {
+                  "type": "application/json",
+                  "parameters": [],
+                  "jsonSchema": {
+                    "type": "object",
+                    "properties": {}
+                  },
+                  "required": true,
+                  "mediaType": "",
+                  "examples": [
+                    {
+                      "mediaType": "application/json",
+                      "value": "{\n    \"refreshToken\": \"{{ogocx_refreshToken}}\"\n}"
+                    }
+                  ],
+                  "oasExtensions": ""
+                },
+                "description": "",
+                "tags": [],
+                "status": "developing",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 20,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [],
+                "visibility": "INHERITED",
+                "moduleId": 1213890,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [
+                  {
+                    "type": "extractor",
+                    "data": {
+                      "variableName": "ogocx_accessToken",
+                      "variableType": "environment",
+                      "subject": "responseJson",
+                      "template": "",
+                      "expression": "$.accessToken",
+                      "extractSettings": {
+                        "expression": "$.accessToken",
+                        "continueExtractorSettings": {
+                          "isContinueExtractValue": false,
+                          "JsonArrayValueIndexValue": ""
+                        }
+                      }
+                    },
+                    "defaultEnable": false,
+                    "enable": true,
+                    "id": "gKYFYnSUSr4UU8yzzGwbW"
+                  }
+                ],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "sign-in",
+              "api": {
+                "id": "33881762",
+                "method": "post",
+                "path": "{{gateway_url}}/auth/sign-in",
+                "parameters": {
+                  "path": []
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "103473656",
+                    "code": 200,
+                    "name": "Correto",
+                    "headers": [],
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {
+                        "accessToken": {
+                          "type": "string"
+                        },
+                        "refreshToken": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "accessToken",
+                        "refreshToken"
+                      ]
+                    },
+                    "itemSchema": {},
+                    "description": "",
+                    "contentType": "json",
+                    "mediaType": ""
+                  }
+                ],
+                "responseExamples": [],
+                "requestBody": {
+                  "type": "application/json",
+                  "parameters": [],
+                  "jsonSchema": {
+                    "type": "object",
+                    "properties": {}
+                  },
+                  "required": true,
+                  "mediaType": "",
+                  "examples": [
+                    {
+                      "mediaType": "application/json",
+                      "value": "{\n    \"email\" : \"esther.martins@yahoo.com\",\n    \"password\": \"Caio1234567\"\n}"
+                    }
+                  ],
+                  "oasExtensions": ""
+                },
+                "description": "",
+                "tags": [],
+                "status": "developing",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 10,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [],
+                "visibility": "INHERITED",
+                "moduleId": 1213890,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [
+                  {
+                    "type": "extractor",
+                    "data": {
+                      "variableName": "ogocx_accessToken",
+                      "variableType": "environment",
+                      "subject": "responseJson",
+                      "template": "",
+                      "expression": "$.accessToken",
+                      "extractSettings": {
+                        "expression": "$.accessToken",
+                        "continueExtractorSettings": {
+                          "isContinueExtractValue": false,
+                          "JsonArrayValueIndexValue": ""
+                        }
+                      }
+                    },
+                    "defaultEnable": false,
+                    "enable": true,
+                    "id": "jb7lqYx4v_sFcmwWyw0Kd"
+                  },
+                  {
+                    "type": "extractor",
+                    "data": {
+                      "variableName": "ogocx_refreshToken",
+                      "variableType": "environment",
+                      "subject": "responseJson",
+                      "template": "",
+                      "expression": "$.refreshToken",
+                      "extractSettings": {
+                        "expression": "$.refreshToken",
+                        "continueExtractorSettings": {
+                          "isContinueExtractValue": false,
+                          "JsonArrayValueIndexValue": ""
+                        }
+                      }
+                    },
+                    "defaultEnable": false,
+                    "enable": true,
+                    "id": "w4S1GQhZLyLZeVIrK8RdI"
+                  }
+                ],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            },
+            {
+              "name": "logout",
+              "api": {
+                "id": "34178937",
+                "method": "post",
+                "path": "{{auth_url}}/auth/logout",
+                "parameters": {
+                  "header": [
+                    {
+                      "required": false,
+                      "description": "",
+                      "type": "string",
+                      "id": "c4Z3Mn4k3o",
+                      "example": "Bearer {{ogocx_token}}",
+                      "enable": true,
+                      "name": "Authorization"
+                    }
+                  ]
+                },
+                "auth": {},
+                "securityScheme": {},
+                "commonParameters": {
+                  "query": [],
+                  "body": [],
+                  "cookie": [],
+                  "header": []
+                },
+                "responses": [
+                  {
+                    "id": "162375846",
+                    "code": 200,
+                    "name": "Sucesso",
+                    "jsonSchema": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "itemSchema": {},
+                    "contentType": "json"
+                  }
+                ],
+                "responseExamples": [
+                  {
+                    "name": "Sem conteúdo",
+                    "data": "",
+                    "responseId": "162375846"
+                  }
+                ],
+                "requestBody": {
+                  "type": "application/json",
+                  "parameters": [],
+                  "jsonSchema": {
+                    "type": "object",
+                    "properties": {}
+                  },
+                  "required": true,
+                  "mediaType": "",
+                  "examples": [
+                    {
+                      "mediaType": "application/json",
+                      "value": "{\n    \"refreshToken\": \"{{ogocx_refreshToken}}\"\n}"
+                    }
+                  ],
+                  "oasExtensions": ""
+                },
+                "description": "",
+                "tags": [],
+                "status": "developing",
+                "serverId": "",
+                "operationId": "",
+                "sourceUrl": "",
+                "ordering": 30,
+                "cases": [],
+                "mocks": [],
+                "customApiFields": "{}",
+                "advancedSettings": {
+                  "disabledSystemHeaders": {}
+                },
+                "mockScript": {},
+                "codeSamples": [],
+                "commonResponseStatus": {},
+                "responseChildren": [],
+                "visibility": "INHERITED",
+                "moduleId": 1213890,
+                "oasExtensions": "",
+                "type": "http",
+                "preProcessors": [],
+                "postProcessors": [],
+                "inheritPostProcessors": {},
+                "inheritPreProcessors": {}
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "socketCollection": [],
+  "docCollection": [],
+  "webSocketCollection": [],
+  "socketIOCollection": [],
+  "mcpClientCollection": [],
+  "responseCollection": [],
+  "schemaCollection": [],
+  "securitySchemeCollection": [],
+  "oasComponentCollection": [],
+  "requestCollection": [
+    {
+      "name": "Root",
+      "children": [],
+      "ordering": [
+        "requestFolder.10031708"
+      ],
+      "items": []
+    }
+  ],
+  "environments": [],
+  "commonScripts": [],
+  "globalVariables": [
+    {
+      "id": "1261844",
+      "variables": [
+        {
+          "name": "ogocx_accessToken",
+          "securityType": "default",
+          "value": "",
+          "description": "",
+          "isBindInitial": true,
+          "initialValue": "",
+          "isSync": true
+        },
+        {
+          "name": "ogocx_refreshToken",
+          "securityType": "default",
+          "value": "",
+          "description": "",
+          "isBindInitial": true,
+          "initialValue": "",
+          "isSync": true
+        }
+      ]
+    }
+  ],
+  "commonParameters": null,
+  "customFunctions": [],
+  "projectTestCaseCategories": [
+    {
+      "id": 1232234,
+      "name": "Positivo",
+      "description": "Entradas válidas e resultados esperados corretos, representando um uso típico."
+    },
+    {
+      "id": 1232235,
+      "name": "Negativo",
+      "description": "Entradas negativas ou inválidas, como campos ausentes, tipos incorretos, métodos não suportados etc."
+    },
+    {
+      "id": 1232236,
+      "name": "Limite",
+      "description": "Condições extremas ou de limite, como comprimento máximo de string, valores vazios, zero, null etc."
+    },
+    {
+      "id": 1232237,
+      "name": "Segurança",
+      "description": "Casos que podem expor riscos de segurança da API."
+    },
+    {
+      "id": 1232238,
+      "name": "Outros",
+      "description": "Casos não classificados nas categorias existentes."
+    }
+  ],
+  "projectTestCaseTags": [
+    {
+      "id": 5347082,
+      "name": "Somente campos obrigatórios",
+      "description": "Enviar apenas os campos obrigatórios com valores válidos, omitindo todos os opcionais, para testar a requisição mínima válida."
+    },
+    {
+      "id": 5347083,
+      "name": "Semântica válida",
+      "description": "Usar valores sintaticamente corretos que também façam sentido na lógica de negócio ou no contexto do domínio."
+    },
+    {
+      "id": 5347084,
+      "name": "Cobertura de combinações de enum",
+      "description": "Para todos os parâmetros do tipo enum, aplicar design ortogonal para construir sistematicamente combinações de casos de teste dos parâmetros e de seus valores de enum, dedicadas a testar a cobertura de enums."
+    },
+    {
+      "id": 5347085,
+      "name": "Outro caso positivo",
+      "description": "Fornecer entradas realistas e válidas que atendam à especificação da API, produzindo o resultado correto e esperado."
+    },
+    {
+      "id": 5347086,
+      "name": "Campos obrigatórios ausentes",
+      "description": "Omitir um ou mais campos obrigatórios no corpo ou nos parâmetros da requisição."
+    },
+    {
+      "id": 5347087,
+      "name": "Valores inválidos",
+      "description": "Fornecer valores com tipo e formato corretos, mas logicamente inválidos para o campo."
+    },
+    {
+      "id": 5347088,
+      "name": "Erros de tipo",
+      "description": "Usar valores com tipos de dados incorretos, como enviar uma string em vez de um inteiro."
+    },
+    {
+      "id": 5347089,
+      "name": "Erros de formato",
+      "description": "Fornecer valores em formato incorreto, por exemplo, padrão de data errado ou endereço de e-mail malformado."
+    },
+    {
+      "id": 5347090,
+      "name": "Erros semânticos",
+      "description": "Usar valores sintática e formalmente corretos que sejam logicamente impossíveis ou violem regras do domínio."
+    },
+    {
+      "id": 5347091,
+      "name": "Outro caso negativo",
+      "description": "Fornecer entradas inválidas ou inesperadas que devem acionar o tratamento de erros ou a rejeição pela API."
+    },
+    {
+      "id": 5347092,
+      "name": "Nulo",
+      "description": "Deve ser o literal JSON `null` (não vazio, não \"null\")."
+    },
+    {
+      "id": 5347093,
+      "name": "Zero",
+      "description": "Deve ser o literal numérico 0."
+    },
+    {
+      "id": 5347094,
+      "name": "Valores vazios",
+      "description": "Deve ser \"\"."
+    },
+    {
+      "id": 5347095,
+      "name": "Valores máximos",
+      "description": "Fornecer os valores mínimo e máximo permitidos exatos para campos numéricos ou de data."
+    },
+    {
+      "id": 5347096,
+      "name": "Valores mínimos",
+      "description": "Fornecer os valores mínimo e máximo permitidos exatos para campos numéricos ou de data."
+    },
+    {
+      "id": 5347097,
+      "name": "Estouro",
+      "description": "Fornecer valores logo além dos limites mínimo ou máximo permitidos."
+    },
+    {
+      "id": 5347098,
+      "name": "Subfluxo",
+      "description": "Fornecer valores logo além dos limites mínimo ou máximo permitidos."
+    },
+    {
+      "id": 5347099,
+      "name": "Strings muito longas",
+      "description": "Fornecer strings mais longas que o comprimento máximo permitido ou mais curtas que o comprimento mínimo exigido."
+    },
+    {
+      "id": 5347100,
+      "name": "Strings muito curtas",
+      "description": "Fornecer strings mais longas que o comprimento máximo permitido ou mais curtas que o comprimento mínimo exigido."
+    },
+    {
+      "id": 5347101,
+      "name": "Autorização em nível de objeto comprometida",
+      "description": "Usuários acessam ou manipulam objetos de dados sem a devida autorização."
+    },
+    {
+      "id": 5347102,
+      "name": "Controle de acesso",
+      "description": "Restringir os recursos e as ações que os usuários podem acessar com base em papéis, permissões ou atributos."
+    },
+    {
+      "id": 5347103,
+      "name": "Falhas de autenticação",
+      "description": "A autenticação é fraca, está mal configurada ou foi contornada, permitindo acesso não autorizado."
+    },
+    {
+      "id": 5347104,
+      "name": "Injeção SQL",
+      "description": "Inserir código SQL malicioso nas entradas para testar vulnerabilidades de injeção SQL."
+    },
+    {
+      "id": 5347105,
+      "name": "Injeção XSS",
+      "description": "Injetar JavaScript ou tags HTML para testar vulnerabilidades de XSS."
+    },
+    {
+      "id": 5347106,
+      "name": "Entrada fuzz",
+      "description": "Enviar cargas úteis grandes ou geradas aleatoriamente para testar validação de entrada e estabilidade."
+    },
+    {
+      "id": 5347107,
+      "name": "Injeção de comandos",
+      "description": "Inserir comandos de shell nas entradas para testar vulnerabilidades de execução de comandos."
+    },
+    {
+      "id": 5347108,
+      "name": "Injeção JSON",
+      "description": "Inserir estruturas JSON maliciosas ou inesperadas para testar análise e validação."
+    },
+    {
+      "id": 5347109,
+      "name": "Injeção NoSQL",
+      "description": "Fornecer consultas ou operadores específicos de NoSQL para testar injeção."
+    },
+    {
+      "id": 5347110,
+      "name": "Outros",
+      "description": "Casos não classificados nas categorias existentes."
+    }
+  ],
+  "projectAssociations": [],
+  "moduleSettings": [
+    {
+      "id": "1213890",
+      "name": "Módulo predefinido",
+      "description": "",
+      "moduleVariables": [],
+      "openApiInfo": {}
+    }
+  ]
+}
