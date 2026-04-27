@@ -26,7 +26,6 @@ public class UserController {
     private final GetUserUseCase getUserUseCase;
     private final GetAllUsersUseCase getAllUsersUseCase;
     private final UpdateUserUseCase updateUserUseCase;
-    private final AuditLogUseCase auditLogUseCase;
 
     @PostMapping
     public ResponseEntity<CreatedUserResponseDTO<GetUserDTO>> create(@RequestBody @Valid CreateUserDTO dto){

@@ -1,11 +1,11 @@
-package com.ogocx.authservice.mappers;
+package com.ogocx.authservice.factories;
 
 import com.ogocx.authservice.dtos.UserCreatedMessageDTO;
 import com.ogocx.authservice.models.CredentialModel;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CredentialMapper {
+public class CredentialFactory {
 
     public CredentialModel UserCreatedMessage(UserCreatedMessageDTO dto) {
         CredentialModel credential = new CredentialModel();

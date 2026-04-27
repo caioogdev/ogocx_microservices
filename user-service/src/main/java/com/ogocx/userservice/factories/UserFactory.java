@@ -36,7 +36,6 @@ public class UserFactory {
         if (dto.birthDate() != null) user.setBirthDate(dto.birthDate());
         if (dto.email() != null) user.setEmail(dto.email().trim().toLowerCase());
         if (dto.status() != null) user.setStatus(dto.status());
-        user.setUpdatedAt(LocalDateTime.now());
         user.setUpdatedBy(updatedBy);
     }
 

@@ -35,8 +35,8 @@ public class SignInUseCase {
             throw new InvalidCredentials();
         }
 
-        String accessToken  = jwtUseCase.generate(tokenMapper.AccessClaimsMapper(credential.getId(), credential.getEmail()));
-        String refreshToken = jwtUseCase.generate(tokenMapper.RefreshClaimsMapper(credential.getId(), credential.getEmail()));
+        String accessToken  = jwtUseCase.generate(tokenMapper.AccessClaims(credential.getId(), credential.getEmail()));
+        String refreshToken = jwtUseCase.generate(tokenMapper.RefreshClaims(credential.getId(), credential.getEmail()));
 
         refreshTokenRepository.save(
                 RefreshTokenFactory.create(credential.getId(), refreshToken, refreshExpiration)

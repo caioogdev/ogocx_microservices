@@ -16,7 +16,7 @@ public class UpdateCredentialUseCase {
 
     @Transactional
     public void execute(UserUpdatedMessageDTO dto) {
-        var credential = authValidator.findByEmail(dto.email());
+        var credential = authValidator.findById(dto.userId());
 
         if (dto.email() != null) credential.setEmail(dto.email());
         if (dto.passwordHash() != null) credential.setPasswordHash(dto.passwordHash());

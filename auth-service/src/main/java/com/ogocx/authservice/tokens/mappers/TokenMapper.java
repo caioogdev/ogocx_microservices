@@ -9,18 +9,22 @@ import java.util.UUID;
 @Component
 public class TokenMapper {
 
-    @Value("${spring.jwt.expiration.access}")
-    private Long accessExpiration;
+    private final long accessExpiration;
+    private final long refreshExpiration;
 
-    @Value("${spring.jwt.expiration.refresh}")
-    private Long refreshExpiration;
+    public TokenMapper(
+            @Value("${spring.jwt.expiration.access}") long accessExpiration,
+            @Value("${spring.jwt.expiration.refresh}") long refreshExpiration
+    ) {
+        this.accessExpiration = accessExpiration;
+        this.refreshExpiration = refreshExpiration;
+    }
 
-
-    public TokenClaimsDTO AccessClaimsMapper(UUID userId, String email){
+    public TokenClaimsDTO AccessClaims(UUID userId, String email) {
         return new TokenClaimsDTO(userId, email, accessExpiration, "access");
     }
 
-    public TokenClaimsDTO RefreshClaimsMapper(UUID userId, String email){
+    public TokenClaimsDTO RefreshClaims(UUID userId, String email) {
         return new TokenClaimsDTO(userId, email, refreshExpiration, "refresh");
     }
 }

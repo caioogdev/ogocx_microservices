@@ -10,6 +10,11 @@ services:
       RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
     volumes:
       - ogocx_rabbitmq:/var/lib/rabbitmq
+  redis:
+    image: redis:8-alpine
+    container_name: ogocx_redis
+    ports:
+      - "6379:6379"
 
   user-service-postgres:
     image: postgres:16
@@ -46,6 +51,16 @@ services:
       - "9200:9200"
     volumes:
       - ogocx_elasticsearch:/usr/share/elasticsearch/data
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:9.2.8
+    container_name: kibana
+    ports:
+      - "5601:5601"
+    environment:
+      ELASTICSEARCH_HOSTS: http://elasticsearch:9200
+    depends_on:
+      - elasticsearch
 
 volumes:
   ogocx_rabbitmq:

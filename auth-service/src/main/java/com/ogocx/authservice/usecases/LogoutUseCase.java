@@ -20,16 +20,6 @@ public class LogoutUseCase {
     @Transactional
     public void execute(String refreshToken) {
         refreshTokenRepository.deleteByTokenHash(TokenHashUtil.hash(refreshToken));
-        // idempotente: se o token não existir, retorna 204 do mesmo jeito
     }
 
-    static String hash(String token) {
-        try {
-            byte[] bytes = MessageDigest.getInstance("SHA-256")
-                    .digest(token.getBytes(StandardCharsets.UTF_8));
-            return HexFormat.of().formatHex(bytes);
-        } catch (NoSuchAlgorithmException e) {
-            throw new IllegalStateException("SHA-256 unavailable", e);
-        }
-    }
 }

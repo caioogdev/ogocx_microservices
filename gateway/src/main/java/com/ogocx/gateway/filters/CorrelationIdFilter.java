@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
 import java.util.UUID;
 
 @NullMarked
@@ -28,7 +29,12 @@ public class CorrelationIdFilter implements GlobalFilter, Ordered {
                 .header(HEADER, correlationId)
                 .build();
 
-        exchange.getResponse().getHeaders().set(HEADER, correlationId);
+        exchange.getResponse().beforeCommit(() -> {
+            exchange.getResponse().getHeaders().putIfAbsent(
+                    HEADER, List.of(correlationId)
+            );
+            return Mono.empty();
+        });
 
         return chain.filter(exchange.mutate().request(mutated).build());
     }

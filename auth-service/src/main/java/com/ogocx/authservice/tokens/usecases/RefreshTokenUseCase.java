@@ -41,8 +41,8 @@ public class RefreshTokenUseCase {
         UUID userId  = jwtUseCase.extractUserId(dto.refreshToken());
         String email = jwtUseCase.extractEmail(dto.refreshToken());
 
-        String newAccessToken  = jwtUseCase.generate(tokenMapper.AccessClaimsMapper(userId, email));
-        String newRefreshToken = jwtUseCase.generate(tokenMapper.RefreshClaimsMapper(userId, email));
+        String newAccessToken  = jwtUseCase.generate(tokenMapper.AccessClaims(userId, email));
+        String newRefreshToken = jwtUseCase.generate(tokenMapper.RefreshClaims(userId, email));
 
         refreshTokenRepository.save(
                 RefreshTokenFactory.create(userId, newRefreshToken, refreshExpiration)

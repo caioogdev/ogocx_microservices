@@ -8,11 +8,11 @@ import com.ogocx.userservice.exceptions.UserNotFoundException;
 import com.ogocx.userservice.models.UserModel;
 import com.ogocx.userservice.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 
-@Service
+@Component
 @RequiredArgsConstructor
 public class UserValidator {
 
