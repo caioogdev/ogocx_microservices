@@ -13,6 +13,17 @@ wait:
 	@echo "Waiting for containers to be ready..."
 	sleep 10
 
+
+# APP COMPLETO
+.PHONY: start-app stop-app restart-app
+
+start-app: start-infra wait start-services
+
+stop-app: stop-services stop-infra
+
+restart-app: stop-app start-app
+
+
 # INFRA
 .PHONY: start-infra stop-infra restart-infra
 
@@ -24,22 +35,8 @@ stop-infra:
 
 restart-infra: stop-infra start-infra
 
-
-# SERVICES
-.PHONY: start-users start-auth start-gateway
-.PHONY: start-services stop-services restart-services
-
-start-users:
-	cd $(USER_SERVICE) && $(MVN) spring-boot:run
-
-start-auth:
-	cd $(AUTH_SERVICE) && $(MVN) spring-boot:run
-
-start-gateway:
-	cd $(GATEWAY) && $(MVN) spring-boot:run
-
-
 # ALL SERVICES
+.PHONY: start-services stop-services restart-services
 start-services:
 	$(MAKE) start-users & \
 	$(MAKE) start-auth & \
@@ -53,12 +50,29 @@ stop-services:
 
 restart-services: stop-services start-services
 
+# INDIVIDUAL
+.PHONY: start-users start-auth start-gateway
+.PHONY: stop-users stop-auth stop-gateway
+.PHONY: restart-users restart-auth restart-gateway
 
-# APP COMPLETO
-.PHONY: start-app stop-app restart-app
+start-users:
+	cd $(USER_SERVICE) && $(MVN) spring-boot:run
 
-start-app: start-infra wait start-services
+start-auth:
+	cd $(AUTH_SERVICE) && $(MVN) spring-boot:run
 
-stop-app: stop-services stop-infra
+start-gateway:
+	cd $(GATEWAY) && $(MVN) spring-boot:run
 
-restart-app: stop-app start-app
+stop-users:
+	pkill -f "$(USER_SERVICE).*spring-boot:run" || true
+
+stop-auth:
+	pkill -f "$(AUTH_SERVICE).*spring-boot:run" || true
+
+stop-gateway:
+	pkill -f "$(GATEWAY).*spring-boot:run" || true
+
+restart-users: stop-users start-users
+restart-auth: stop-auth start-auth
+restart-gateway: stop-gateway start-gateway
