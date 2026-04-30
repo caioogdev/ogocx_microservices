@@ -14,10 +14,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Instant;
+
 @Service
 @RequiredArgsConstructor
 public class SignInUseCase {
 
+    private static final int MAX_SESSIONS = 5;
     private final AuthValidator authValidator;
     private final PasswordEncoder passwordEncoder;
     private final JwtUseCase jwtUseCase;
@@ -33,6 +36,13 @@ public class SignInUseCase {
 
         if (!passwordEncoder.matches(dto.password(), credential.getPasswordHash())) {
             throw new InvalidCredentials();
+        }
+
+        refreshTokenRepository.deleteExpiredByUserId(credential.getId(), Instant.now());
+
+        long activeSessions = refreshTokenRepository.countByUserId(credential.getId());
+        if (activeSessions >= MAX_SESSIONS) {
+            refreshTokenRepository.deleteOldestByUserId(credential.getId());
         }
 
         String accessToken  = jwtUseCase.generate(tokenMapper.AccessClaims(credential.getId(), credential.getEmail()));

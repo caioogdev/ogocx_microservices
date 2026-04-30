@@ -23,6 +23,11 @@ public class UserValidator {
                 .orElseThrow(() -> new UserNotFoundException(userId.toString()));
     }
 
+    public UserModel findById(UUID id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException(id.toString()));
+    }
+
     public void validateCreate(CreateUserDTO dto) {
         if (userRepository.existsByEmail(dto.email()))
             throw new EmailAlreadyExistsException(dto.email());

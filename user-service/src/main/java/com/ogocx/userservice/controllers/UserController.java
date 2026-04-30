@@ -1,12 +1,8 @@
 package com.ogocx.userservice.controllers;
 
-import com.ogocx.userservice.audit.AuditLogUseCase;
 import com.ogocx.userservice.dtos.*;
 import com.ogocx.servicelib.dtos.PaginationDTO;
-import com.ogocx.userservice.usecases.CreateUserUseCase;
-import com.ogocx.userservice.usecases.GetAllUsersUseCase;
-import com.ogocx.userservice.usecases.GetUserUseCase;
-import com.ogocx.userservice.usecases.UpdateUserUseCase;
+import com.ogocx.userservice.usecases.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -15,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -26,6 +24,8 @@ public class UserController {
     private final GetUserUseCase getUserUseCase;
     private final GetAllUsersUseCase getAllUsersUseCase;
     private final UpdateUserUseCase updateUserUseCase;
+    private final SearchUserUseCase searchUserUseCase;
+    private final DeactivateUserUseCase deactivateUserUseCase;
 
     @PostMapping
     public ResponseEntity<CreatedUserResponseDTO<GetUserDTO>> create(@RequestBody @Valid CreateUserDTO dto){
@@ -40,6 +40,24 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<GetUserDTO> getById(@PathVariable UUID id) {
         return ResponseEntity.ok(getUserUseCase.execute(id));
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<PaginationDTO<GetUserDTO>> search(
+            @RequestParam(required = false) String firstName,
+            @RequestParam(required = false) String lastName,
+            @RequestParam(required = false) String email,
+            @RequestParam(required = false) String firstDocument,
+            @RequestParam(required = false) String secondDocument,
+            @RequestParam(required = false) Boolean status,
+            @RequestParam(required = false) LocalDate birthDate,
+            @RequestParam(defaultValue = "0") @Min(0) int page,
+            @RequestParam(defaultValue = "10") @Min(1) @Max(100) int perPage
+    ) {
+        return ResponseEntity.ok(searchUserUseCase.execute(
+                firstName, lastName, email, firstDocument,
+                secondDocument, status, birthDate, page, perPage
+        ));
     }
 
     @GetMapping
@@ -63,4 +81,9 @@ public class UserController {
         );
     }
 
+    @PatchMapping("/{id}/deactivate")
+    public ResponseEntity<Map<String, String>> deactivate(@PathVariable UUID id) {
+        deactivateUserUseCase.execute(id);
+        return ResponseEntity.ok(Map.of("message", "User deactivated successfully"));
+    }
 }

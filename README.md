@@ -11,6 +11,8 @@ Arquitetura de microsserviços construída com Java e Spring Boot para aprendiza
 | `auth-service` | 8081 | Autenticação e emissão de tokens JWT |
 | `ogocx-bus` | — | Biblioteca compartilhada de eventos do RabbitMQ |
 | `ogocx-service-lib` | — | Biblioteca compartilhada de erros, correlationId e paginação |
+| `Redis` | — | Rate limiting |
+| `Kibana` | — | Visualização de audit logs |
 
 ## Tecnologias
 
@@ -22,6 +24,8 @@ Arquitetura de microsserviços construída com Java e Spring Boot para aprendiza
 - Elasticsearch
 - JWT (access token + refresh token rotacionado)
 - Docker Compose
+- Redis (rate limiting)
+- Kibana (visualização de audit logs)
 
 ## Arquitetura
 
@@ -103,6 +107,7 @@ Todas as requisições passam pelo gateway na porta `8082`.
 |---|---|---|---|
 | POST | `/users` | Criar usuário | Sim |
 | GET | `/users` | Listar usuários | Sim |
+| GET | `/users/search` | Buscar usuários por filtros | Sim |
 | GET | `/users/{id}` | Buscar usuário por ID | Sim |
 | PUT | `/users/{id}` | Atualizar usuário | Sim |
 
@@ -111,17 +116,22 @@ Todas as requisições passam pelo gateway na porta `8082`.
 | Método | Endpoint | Descrição | Auth |
 |---|---|---|---|
 | GET | `/users/audit` | Logs de auditoria do user-service | Sim |
+| GET | `/users/audit/search` | Buscar logs de auditoria do user-service por filtros | Sim |
 | GET | `/auth/audit` | Logs de auditoria do auth-service | Sim |
+| GET | `/auth/audit/search` | Buscar logs de auditoria do auth-service por filtros | Sim |
 
 > Rotas autenticadas exigem o header `Authorization: Bearer <access_token>`
 
 ## Segurança
 
-- Refresh tokens são persistidos no banco e rotacionados a cada uso
+- Refresh tokens são persistidos no banco e rotacionados a cada uso 
+- Refresh tokens expirados removidos automaticamente a cada novo login
 - Access tokens têm vida curta e expiram naturalmente
 - No logout o refresh token é revogado imediatamente
-- Todos os erros seguem o formato RFC 7807 (Problem Details)
+- Todos os erros seguem o formato RFC 7807
 - Requisições rastreadas via `X-Correlation-Id` end-to-end
+- Rate limiting por IP real (suporte a X-Forwarded-For para proxies)
+- Limite de sessões simultâneas por usuário (máx. 5 refresh tokens ativos)
 
 ## Observações
 

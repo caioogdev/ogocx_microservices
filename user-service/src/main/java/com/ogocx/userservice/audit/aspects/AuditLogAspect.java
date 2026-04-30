@@ -88,6 +88,31 @@ public class AuditLogAspect {
         }
     }
 
+    @Around("execution(* com.ogocx.userservice.usecases.DeactivateUserUseCase.execute(..))")
+    public Object aroundDeactivateUser(ProceedingJoinPoint joinPoint) throws Throwable {
+        UUID userId = (UUID) joinPoint.getArgs()[0];
+        try {
+            Object result = joinPoint.proceed();
+            auditLogUseCase.log(AuditLogEntry.builder()
+                    .userId(userId)
+                    .actorId(getActorId())
+                    .action(AuditActions.USER_DEACTIVATE)
+                    .status(AuditStatus.SUCCESS)
+                    .description("User '" + userId + "' deactivated")
+                    .build());
+            return result;
+        } catch (Exception ex) {
+            auditLogUseCase.log(AuditLogEntry.builder()
+                    .userId(userId)
+                    .actorId(getActorId())
+                    .action(AuditActions.USER_DEACTIVATE)
+                    .status(AuditStatus.FAILED)
+                    .description("Failed to deactivate user '" + userId + "': " + ex.getMessage())
+                    .build());
+            throw ex;
+        }
+    }
+
     @Around("execution(* com.ogocx.userservice.usecases.GetUserUseCase.execute(..))")
     public Object aroundGetUser(ProceedingJoinPoint joinPoint) throws Throwable {
         UUID userId = (UUID) joinPoint.getArgs()[0];
@@ -108,7 +133,30 @@ public class AuditLogAspect {
                     .actorId(getActorId())
                     .action(AuditActions.USER_FETCH)
                     .status(AuditStatus.FAILED)
-                    .description("Failed to fetch user '" + userId + "': " + ex.getMessage())
+                    .description("Failed to fetch user ' " + userId + " ': " + ex.getMessage())
+                    .build());
+            throw ex;
+        }
+    }
+
+    @Around("execution(* com.ogocx.userservice.usecases.SearchUserUseCase.execute(..))")
+    public Object aroundSearchUser(ProceedingJoinPoint joinPoint) throws Throwable {
+        try {
+            Object result = joinPoint.proceed();
+            PaginationDTO<?> dto = (PaginationDTO<?>) result;
+            auditLogUseCase.log(AuditLogEntry.builder()
+                    .actorId(getActorId())
+                    .action(AuditActions.USER_SEARCH)
+                    .status(AuditStatus.SUCCESS)
+                    .description("User search executed, total results: " + dto.total())
+                    .build());
+            return result;
+        } catch (Exception ex) {
+            auditLogUseCase.log(AuditLogEntry.builder()
+                    .actorId(getActorId())
+                    .action(AuditActions.USER_SEARCH)
+                    .status(AuditStatus.FAILED)
+                    .description("Failed to search users: " + ex.getMessage())
                     .build());
             throw ex;
         }

@@ -32,6 +32,7 @@ public class JwtUseCase {
 
     public String generate(TokenClaimsDTO dto) {
         return Jwts.builder()
+                .id(UUID.randomUUID().toString())
                 .subject(dto.userId().toString())
                 .claim("email", dto.email())
                 .claim("type", dto.type())

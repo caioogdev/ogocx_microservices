@@ -39,6 +39,10 @@ public class UserFactory {
         user.setUpdatedBy(updatedBy);
     }
 
+    public void desactive(UserModel user){
+        user.setStatus(false);
+    }
+
     public UserCreatedMessageDTO createdMessage(UserModel user) {
         return new UserCreatedMessageDTO(
                 user.getId(),
