@@ -7,6 +7,12 @@ INFRA=infra
 MVN=./mvnw
 DOCKER_COMPOSE=docker compose
 
+# WAIT
+.PHONY: wait
+wait:
+	@echo "Waiting for containers to be ready..."
+	sleep 10
+
 # INFRA
 .PHONY: start-infra stop-infra restart-infra
 
@@ -51,7 +57,7 @@ restart-services: stop-services start-services
 # APP COMPLETO
 .PHONY: start-app stop-app restart-app
 
-start-app: start-infra start-services
+start-app: start-infra wait start-services
 
 stop-app: stop-services stop-infra
 

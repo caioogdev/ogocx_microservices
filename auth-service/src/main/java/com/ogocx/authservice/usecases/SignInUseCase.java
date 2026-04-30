@@ -7,6 +7,7 @@ import com.ogocx.authservice.tokens.dtos.TokenResponseDTO;
 import com.ogocx.authservice.tokens.factories.RefreshTokenFactory;
 import com.ogocx.authservice.tokens.mappers.TokenMapper;
 import com.ogocx.authservice.tokens.repositories.RefreshTokenRepository;
+import com.ogocx.authservice.utils.PepperPasswordEncoderUtils;
 import com.ogocx.authservice.validators.AuthValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,7 +23,7 @@ public class SignInUseCase {
 
     private static final int MAX_SESSIONS = 5;
     private final AuthValidator authValidator;
-    private final PasswordEncoder passwordEncoder;
+    private final PepperPasswordEncoderUtils pepperPasswordEncoderUtils;
     private final JwtUseCase jwtUseCase;
     private final TokenMapper tokenMapper;
     private final RefreshTokenRepository refreshTokenRepository;
@@ -34,7 +35,7 @@ public class SignInUseCase {
     public TokenResponseDTO execute(SignInReqDTO dto) {
         var credential = authValidator.findByEmail(dto.email());
 
-        if (!passwordEncoder.matches(dto.password(), credential.getPasswordHash())) {
+        if (!pepperPasswordEncoderUtils.matches(dto.password(), credential.getPasswordHash())) {
             throw new InvalidCredentials();
         }
 

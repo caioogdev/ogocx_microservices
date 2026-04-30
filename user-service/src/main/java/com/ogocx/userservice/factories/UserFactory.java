@@ -2,17 +2,15 @@ package com.ogocx.userservice.factories;
 
 import com.ogocx.userservice.dtos.*;
 import com.ogocx.userservice.models.UserModel;
+import com.ogocx.userservice.utils.PepperPasswordEncoderUtils;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
 public class UserFactory {
 
-    private final PasswordEncoder passwordEncoder;
+    private final PepperPasswordEncoderUtils pepperPasswordEncoderUtils;
 
     public UserModel create(CreateUserDTO dto, UserModel createdBy){
         UserModel user = new UserModel();
@@ -22,7 +20,7 @@ public class UserFactory {
         user.setSecondDocument(dto.secondDocument() != null ? dto.secondDocument().trim() : null);
         user.setBirthDate(dto.birthDate());
         user.setEmail(dto.email().trim().toLowerCase());
-        user.setPassword(passwordEncoder.encode(dto.password()));
+        user.setPassword(pepperPasswordEncoderUtils.encode(dto.password()));
         user.setStatus(dto.status());
         user.setCreatedBy(createdBy);
         return user;

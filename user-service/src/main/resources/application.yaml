@@ -33,5 +33,8 @@ rabbitmq:
   exchange:
     user: ${RABBITMQ_EXCHANGE_USER}
 
+security:
+  pepper: my-pepper-key-hash2
+
 server:
   port: 8080
