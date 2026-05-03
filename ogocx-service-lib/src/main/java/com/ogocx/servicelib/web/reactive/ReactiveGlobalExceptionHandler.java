@@ -1,7 +1,7 @@
 package com.ogocx.servicelib.web.reactive;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.ObjectMapper;
 import com.ogocx.servicelib.context.CorrelationContext;
 import com.ogocx.servicelib.error.*;
 import lombok.extern.slf4j.Slf4j;
@@ -81,7 +81,7 @@ public class ReactiveGlobalExceptionHandler implements ErrorWebExceptionHandler 
         byte[] bytes;
         try {
             bytes = objectMapper.writeValueAsBytes(body);
-        } catch (JsonProcessingException e) {
+        } catch (JacksonException e) {
             bytes = ("{\"status\":500,\"code\":\"INTERNAL_ERROR\",\"detail\":\"serialization failed\"}")
                     .getBytes();
         }

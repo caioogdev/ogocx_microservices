@@ -32,6 +32,10 @@ spring:
               predicates:
                 - Path=/users/**
               filters:
+                - name: CircuitBreaker
+                  args:
+                    name: user-service
+                    fallbackUri: forward:/fallback/users
                 - name: RequestRateLimiter
                   args:
                     redis-rate-limiter.replenishRate: 20
@@ -42,6 +46,10 @@ spring:
               predicates:
                 - Path=/auth/**
               filters:
+                - name: CircuitBreaker
+                  args:
+                    name: auth-service
+                    fallbackUri: forward:/fallback/auth
                 - name: RequestRateLimiter
                   args:
                     redis-rate-limiter.replenishRate: 10
@@ -55,6 +63,38 @@ gateway:
 
 jwt:
   secret: ${JWT_SECRET}
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      auth-service:
+        slidingWindowSize: 10
+        failureRateThreshold: 20
+        waitDurationInOpenState: 15s
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowType: COUNT_BASED
+      user-service:
+        slidingWindowSize: 20
+        failureRateThreshold: 50
+        waitDurationInOpenState: 15s
+        permittedNumberOfCallsInHalfOpenState: 5
+        slidingWindowType: COUNT_BASED
+
+  timelimiter:
+    instances:
+      auth-service:
+        timeoutDuration: 3s
+      user-service:
+        timeoutDuration: 5s
+
+  bulkhead:
+    instances:
+      auth-service:
+        maxConcurrentCalls: 20
+        maxWaitDuration: 100ms
+      user-service:
+        maxConcurrentCalls: 40
+        maxWaitDuration: 100ms
 
 server:
   port: 8082
